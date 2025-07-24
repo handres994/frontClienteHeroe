@@ -1,9 +1,10 @@
 export async function consumirAPI(datosDelFormulario){
     //1. Para que back voy
-    let url="localhost:8080/personajes"
+    let url="http://localhost:8080/personajes"
     //2. Configuracion de la peticion
     let peticion={
         method: "POST",
+        headers: {"Content-Type":"application/json"},
         body: datosDelFormulario
     }
     //3. Ir al back

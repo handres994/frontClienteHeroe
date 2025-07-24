@@ -1,3 +1,5 @@
+import { consumirAPI } from "./consumoServicio.js";
+
 // Referencias al formulario
 
 let nombres = document.getElementById("nombres");
@@ -25,14 +27,22 @@ botonFormulario.addEventListener("click", function (evento) {
     footer: '<a href="#">Why do I have this issue?</a>',
   });*/
   let datosQueVoyAEnvirAlBack = {
-    "nombre":nombres.value,
-    "cantidadVida":cantidadDeVida.value,
-    "poderAtaque": poderAtaque.value,
-    "poderDefensa": poderDefensa.value,
-    "fotografia": fotografia.value,
-    "fechaCreacion": fechaCreacion.value,
+    nombre: nombres.value,
+    cantidadVida: cantidadDeVida.value,
+    poderAtaque: poderAtaque.value,
+    poderDefensa: poderDefensa.value,
+    fotografia: fotografia.value,
+    fechaCreacion: fechaCreacion.value,
   };
-  let datosListosParaViajar=JSON.stringify(datosQueVoyAEnvirAlBack)
+  let datosListosParaViajar = JSON.stringify(datosQueVoyAEnvirAlBack);
 
-  alert(datosListosParaViajar)
+  //Llam al consumo
+  consumirAPI(datosListosParaViajar).then(function (respuesta) {
+    Swal.fire({
+    title: "Good job!",
+    text: "You clicked the button!",
+    icon: "success",
+  });
+  });
 });
+  
